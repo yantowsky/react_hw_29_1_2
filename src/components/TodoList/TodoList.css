@@ -1,0 +1,13 @@
+.todo {
+  justify-content: start;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  border: 2px solid;
+  background-color: var(--primary-backgroud-color);
+  padding: 15px;
+}

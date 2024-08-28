@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addItemTodoList } from '../../store/itemsTodoListSlice';
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import inputTextSchema from '../../schemes/inputTextSchema';
 import { FaPlusSquare } from "react-icons/fa";
@@ -9,17 +9,13 @@ import './TodoForms.css'
 
 
 const TodoForms = () => {
-    const inputRef = useRef();
-
-    const { control, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: 'onChange',
-        defaultValues: { task: '' },
         resolver: yupResolver(inputTextSchema)
     });
 
     const dispatch = useDispatch();
-    const addTaskTodoList = () => {
-        const inputValue = inputRef.current.value;
+    const addTaskTodoList = ({ inputValue }) => {
         dispatch(addItemTodoList({ inputValue }));
         reset();
     }
@@ -27,21 +23,14 @@ const TodoForms = () => {
     return (
         <div className='todo-forms'>
             <form className='todo-forms__add' onSubmit={handleSubmit(addTaskTodoList)}>
-                <Controller
-                    name='task'
-                    control={control}
-                    render={({ field }) => (
-                        <input
-                            {...field}
-                            type="text"
-                            ref={inputRef}
-                            placeholder='Add Task...'
-                            autoFocus
-                            autoComplete="off"
-                        />
-                    )}
+                <input
+                    {...register('inputValue')}
+                    type="text"
+                    placeholder='Add Task...'
+                    autoFocus
+                    autoComplete="off"
                 />
-                {errors.task && <p className='form__error'>{errors.task.message}</p>}
+                {<p className='form__error'>{errors.inputValue?.message}</p>}
                 <button
                     type='submit'
                     title='Add Task'

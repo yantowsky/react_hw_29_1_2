@@ -6,7 +6,6 @@ const CounterRedux = () => {
     const counter = useSelector((state) => state.counter.value);
     const dispatch = useDispatch();
 
-
     return (
         <main className='counter'>
             <div className='counter-wrapper'>

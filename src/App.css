@@ -81,29 +81,34 @@ main div ul li:active {
   text-align: center;
 }
 
-.counter-buttons {
-  display: flex;
-  flex-direction: row;
-  padding: 15px;
-  flex: 0;
-  gap: 30px;
-}
+.todo {
+    flex-direction: column;
+    gap: 15px;
+  }
 
-.button-increment,
-.button-decrement {
-    font-size: 1.5rem;
-    font-weight: 700;
-    width: 40px;
-    height: 40px;
-    border: 2px solid;
-}
-
-.button-increment:hover,
-.button-decrement:hover {
-    transform: scale(1.2);
-}
-
-.button-increment:active,
-.button-decrement:active {
-    transform: scale(0.9);
-}
+  .counter-buttons {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    flex: 0;
+    gap: 30px;
+  }
+  
+  .button-increment,
+  .button-decrement {
+      font-size: 1.5rem;
+      font-weight: 700;
+      width: 40px;
+      height: 40px;
+      border: 2px solid;
+  }
+  
+  .button-increment:hover,
+  .button-decrement:hover {
+      transform: scale(1.2);
+  }
+  
+  .button-increment:active,
+  .button-decrement:active {
+      transform: scale(0.9);
+  }

@@ -7,10 +7,12 @@ const itemsTodoListSlice = createSlice({
     },
     reducers: {
         addItemTodoList(state, action) {
+            console.log(action)
+            console.log(state)
             state.itemsTodoList.push({
                 id: Date.now(),
                 checked: false,
-                text: action.payload.text,
+                text: action.payload.inputValue,
             })
         },
         checkedItemTodoList(state, action) {
@@ -18,8 +20,6 @@ const itemsTodoListSlice = createSlice({
 
         },
         delItemTodoList(state, action) {
-            console.log(state);
-            console.log(action);
             state.itemsTodoList = state.itemsTodoList.filter(item => item.id !== action.payload.id);
         },
     },

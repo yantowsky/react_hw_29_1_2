@@ -9,9 +9,9 @@ import './TodoForms.css'
 
 
 const TodoForms = () => {
-    const inputRef = useRef();
+    const [inputValue, setInputValue] = useState('');
 
-    const { control, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: 'onChange',
         defaultValues: { task: '' },
         resolver: yupResolver(inputTextSchema)
@@ -19,27 +19,23 @@ const TodoForms = () => {
 
     const dispatch = useDispatch();
     const addTaskTodoList = () => {
-        const inputValue = inputRef.current.value;
+        // e.preventDefault();
         dispatch(addItemTodoList({ inputValue }));
+        setInputValue('');
         reset();
     }
 
     return (
         <div className='todo-forms'>
             <form className='todo-forms__add' onSubmit={handleSubmit(addTaskTodoList)}>
-                <Controller
-                    name='task'
-                    control={control}
-                    render={({ field }) => (
-                        <input
-                            {...field}
-                            type="text"
-                            ref={inputRef}
-                            placeholder='Add Task...'
-                            autoFocus
-                            autoComplete="off"
-                        />
-                    )}
+                <input
+                    {...register('task')}
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder='Add Task...'
+                    autoFocus
+                    autoComplete="off"
                 />
                 {errors.task && <p className='form__error'>{errors.task.message}</p>}
                 <button

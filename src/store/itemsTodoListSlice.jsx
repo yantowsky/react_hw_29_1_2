@@ -7,13 +7,11 @@ const itemsTodoListSlice = createSlice({
     },
     reducers: {
         addItemTodoList(state, action) {
-            console.log(action)
-            console.log(state)
             state.itemsTodoList.push({
                 id: Date.now(),
                 checked: false,
                 text: action.payload.inputValue,
-            })
+            });
         },
         checkedItemTodoList(state, action) {
             state.itemsTodoList = state.itemsTodoList.map(item => item.id === action.payload.id ? { ...item, checked: !item.checked } : item);

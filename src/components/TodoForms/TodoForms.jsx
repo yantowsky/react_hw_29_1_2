@@ -18,7 +18,8 @@ const TodoForms = ({ text, handleInput, addTaskTodoList }) => {
 
     return (
         <div className='todo-forms'>
-            <form className='todo-forms__add' onSubmit={addTaskTodoList}>
+            {/* <form className='todo-forms__add' onSubmit={handleSubmit(addTaskTodoList)}>  */}
+            <form className='todo-forms__add' onSubmit={addTaskTodoList}> 
                 {/* <Controller
                     name={text}
                     control={control}

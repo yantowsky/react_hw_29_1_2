@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import inputTextSchema from '../../schemes/inputTextSchema';
 import { FaPlusSquare } from "react-icons/fa";
-import './TodoForms.css'
+import './TodoForms.css';
 
 
 const TodoForms = () => {

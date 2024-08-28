@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { checkedItemTodoList } from '../../store/itemsTodoListSlice';
 import { delItemTodoList } from '../../store/itemsTodoListSlice';
 import { FaTrashAlt } from "react-icons/fa";
-import './TodoItem.css'
+import './TodoItem.css';
 
 const TodoItem = ({ id, checked, text }) => {
     const dispatch = useDispatch();
